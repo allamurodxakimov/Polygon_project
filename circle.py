@@ -1,4 +1,4 @@
-from math import pi
+from math import pi,fabs
 
 
 class Circle:
@@ -14,7 +14,7 @@ class Circle:
         Returns:
             bool: True if the circle is valid, False otherwise
         """
-        return False
+        return self.radius>0 
     
     def diameter(self) -> float:
         '''
@@ -24,7 +24,7 @@ class Circle:
         Returns:
             float: return diameter of the circle if the circle is valid, 0 otherwise
         '''
-        return self.radius *2
+        return self.radius *2 if Circle.is_valid(self) == True else False
     
     def circumference(self) -> float:
         '''
@@ -34,7 +34,7 @@ class Circle:
         Returns:
             float: return circumference of the circle if the circle is valid, 0 otherwise
         '''
-        pass
+        return self.radius*2*pi if Circle.is_valid(self) == True else False 
     
     def area(self) -> float:
         '''
@@ -44,4 +44,9 @@ class Circle:
         Returns:
             float: return area of the circle if the circle is valid, 0 otherwise
         '''
-        pass
+        return self.radius*self.radius*pi if Circle.is_valid(self)==True else False
+radius = Circle(4.5)
+print(radius.is_valid())
+print(radius.diameter())
+print(radius.circumference())
+print(radius.area())
